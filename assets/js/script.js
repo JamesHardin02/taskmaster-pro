@@ -61,7 +61,7 @@ $(".list-group").on("click", "p", function() {
 });
 
 // save + revert to default
-$(".list-group").on("blur", "text-area", function(){
+$(".list-group").on("blur", "textarea", function(){
   console.log("OUT OF FOCUS")
   // get the textarea's current value/text
   var text = $(this)
@@ -98,6 +98,7 @@ $(".list-group").on("blur", "text-area", function(){
 
 // edit mode
 $(".list-group").on("click", "span", function(){
+  console.log("focused")
   // get current text
   var date = $(this)
     .text()
@@ -117,11 +118,14 @@ $(".list-group").on("click", "span", function(){
 })
 
 // save + revert to default
-$("list-group").on("blur", "input[type='text']", function(){
+$(".list-group").on("blur", "input[type='text']", function(){
+  console.log("blur")
+  console.log(this)
   // get current text
-  var text = $(this)
+  var date = $(this)
     .val()
     .trim();
+  console.log(date)
 
   // get the parent's ul's id attribute
   var status = $(this)
@@ -131,11 +135,11 @@ $("list-group").on("blur", "input[type='text']", function(){
 
   // get the task's position in the list of other li elements
   var index = $(this)
-    .closest("list-group-item")
+    .closest(".list-group-item")
     .index();
 
   // update task in array and re-save to local storage 
-  tasks[status][index].text = text;
+  tasks[status][index].date = date;
   saveTasks();
 
   // re-create span element with bootstrap classes

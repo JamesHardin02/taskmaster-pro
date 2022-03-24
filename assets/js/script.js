@@ -240,3 +240,14 @@ $(".card .list-group").sortable({
     saveTasks();
   }
 });
+// -------- END OF SORTABLE UI -------- //
+
+// -------- DROP TO DELETE UI -------- //
+$("#trash").droppable({
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function(event, ui) {
+    console.log("drop");
+    ui.draggable.remove();
+  }
+});

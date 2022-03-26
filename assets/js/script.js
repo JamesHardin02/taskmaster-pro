@@ -63,6 +63,7 @@ var loadTasks = function() {
 };
 
 var saveTasks = function() {
+  console.log(JSON.stringify(tasks))
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
@@ -99,7 +100,7 @@ $(".list-group").on("blur", "textarea", function(){
   var index = $(this)
     .closest(".list-group-item")
     .index();
-
+  console.log(index)
   // programatically update text
   tasks[status][index].text = text;
   saveTasks();

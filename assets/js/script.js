@@ -247,10 +247,10 @@ $(".card .list-group").sortable({
     $(".bottom-trash").remove("bottom-trash-drag")
   },
   over: function(event){
-    event.target.addClass("dropover-active")
+    $(this).addClass("dropover-active")
   },
   out: function(event){
-    event.target.removeClass("dropover-active")
+    $(this).removeClass("dropover-active")
   },
   update: function(event) {
     // array to store the task data in 
